@@ -1,0 +1,7 @@
+__pycache__
+database
+venv
+*.log
+.env
+
+
