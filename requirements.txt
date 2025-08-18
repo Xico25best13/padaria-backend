@@ -2,3 +2,19 @@ Flask==2.3.3
 gunicorn
 
 
+
+flask-cors
+
+
+
+Flask-JWT-Extended
+
+
+
+Flask-SQLAlchemy
+
+
+
+psycopg2-binary
+
+

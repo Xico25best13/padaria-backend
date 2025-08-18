@@ -54,7 +54,7 @@ app.register_blueprint(sync_bp, url_prefix="/api")
 app.register_blueprint(init_bp, url_prefix="/api")
 
 # Configuração da base de dados
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), 'database', 'app.db')}"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "postgresql://user:password@host:port/database")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
