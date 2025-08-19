@@ -1,6 +1,6 @@
 import os
 import sys
-# DON\'T CHANGE THIS !!!
+# DON'T CHANGE THIS !!!
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 from flask import Flask, send_from_directory, request
@@ -62,26 +62,6 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
-# Rota para servir o frontend
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def serve(path):
-    static_folder_path = app.static_folder
-    if static_folder_path is None:
-        return "Static folder not configured", 404
-
-    # Se é um ficheiro específico que existe, servir esse ficheiro
-    if path and os.path.exists(os.path.join(static_folder_path, path)):
-        return send_from_directory(static_folder_path, path)
-    
-    # Caso contrário, servir o index.html (para Single Page Application)
-    index_path = os.path.join(static_folder_path, 'index.html')
-    if os.path.exists(index_path):
-        return send_from_directory(static_folder_path, 'index.html')
-    else:
-        return "index.html not found", 404
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=False)
-
 
